@@ -1,0 +1,92 @@
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+	width: 100%;
+	height: 100%;
+}
+body {
+	max-width: 800px;
+	margin: auto;
+}
+
+#logo {}
+
+
+
+/*
+ * Layout
+ */
+
+.column, .columns {
+	position: relative;
+}
+.row {
+	padding-left: 19px;
+}
+.widget {
+	width: 50%;
+	padding-right: 19px;
+	float: left;
+}
+.left.widget {}
+.right.widget {}
+
+
+
+/*
+ * Rendered list of user's JSON data.
+ */
+
+ul.can-edit li {
+	border-top: dashed 1px #aaa;
+	border-bottom: dashed 1px #aaa;
+}
+ul.can-edit li:first-child {
+	border-top: solid 1px #aaa;
+}
+ul.can-edit li:last-child {
+	border-bottom: solid 1px #aaa;
+}
+.delete-btn {
+	float: right;
+}
+
+
+/*
+ *
+ */
+input.user-input {
+	/**/
+}
+
+/*
+I assume that including the modern clearfix solution is permissible for this test.
+*/
+
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
