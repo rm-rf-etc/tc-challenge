@@ -6,10 +6,10 @@
 
 	// I decided to include a rudimentary templating engine.
 	var templates = {
-		"list-item": "<li class=''>{{ words }}<a href='#' class='delete-btn'>delete</a></li>\n"
+		"list-item": "<li class=''><span class='copy'>{{ words }}</span><a href='#' class='delete-btn'>delete</a></li>\n"
 	}
 
-	var internal_data = []
+	var internal_data = [1,2,3,4]
 
 	// Don't worry, I didn't include jQuery.
 	var UI = {
@@ -17,11 +17,13 @@
 	,	$add_btn: $('#add')
 	,	$json_viewer: $('#json-viewer')
 	,	$reload_btn: $('#reload')
-	,	$list: $('#list')
+	,	$list: $('#list-view')
 	}
 
 	UI.$add_btn.addEventListener('click', addToList)
 	UI.$reload_btn.addEventListener('click', updateList)
+
+	render()
 
 
 	function addToList ()

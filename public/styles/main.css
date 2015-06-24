@@ -1,5 +1,6 @@
 
 * { margin:0; padding:0; box-sizing:border-box; }
+a { text-decoration:none; }
 html, body {
 	width: 100%;
 	height: 100%;
@@ -8,7 +9,6 @@ body {
 	max-width: 800px;
 	margin: auto;
 }
-
 #logo {}
 
 
@@ -17,19 +17,19 @@ body {
  * Layout
  */
 
-.column, .columns {
-	position: relative;
-}
 .row {
 	padding-left: 19px;
 }
-.widget {
-	width: 50%;
+.column, .columns {
+	position: relative;
 	padding-right: 19px;
 	float: left;
 }
-.left.widget {}
-.right.widget {}
+.col6 {
+	width: 50%;
+}
+.right { float:right; }
+.left { float:left; }
 
 
 
@@ -37,26 +37,75 @@ body {
  * Rendered list of user's JSON data.
  */
 
-ul.can-edit li {
-	border-top: dashed 1px #aaa;
-	border-bottom: dashed 1px #aaa;
+
+ul.json-list {
+	list-style-type: decimal;
 }
-ul.can-edit li:first-child {
+.json-list li {
+	position: relative;
+	padding: 0.5em;
+
+	border-color: #d4d4d4;
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+
+	background-image: url(/images/list-bg.jpg);
+	background-image-position: top left;
+	background-repeat: no-repeat;
+	background-size: 35px 100%;
+}
+.json-list li:first-child {
 	border-top: solid 1px #aaa;
 }
-ul.can-edit li:last-child {
+.json-list li:last-child {
 	border-bottom: solid 1px #aaa;
 }
+
+.json-list li .copy {
+	position: relative;
+	display: block;
+	max-width: 75%;
+	left: 2em;
+	word-wrap: break-word;
+	color: #ec6c27;
+}
+
 .delete-btn {
-	float: right;
+	position: absolute;
+	right: 0em;
+	top: 0.5em;
+	color: #4199d3;
+}
+.delete-btn:hover {
+	color: #005daa;
 }
 
 
 /*
- *
+ * Input controls
  */
-input.user-input {
-	/**/
+
+.btn {
+	display: table;
+	background: #7eb64f;
+	background-image: -webkit-linear-gradient(top, #7eb64f, #3c6127);
+	background-image: -moz-linear-gradient(top, #7eb64f, #3c6127);
+	background-image: -ms-linear-gradient(top, #7eb64f, #3c6127);
+	background-image: -o-linear-gradient(top, #7eb64f, #3c6127);
+	background-image: linear-gradient(to bottom, #7eb64f, #3c6127);
+	-webkit-border-radius: 5;
+	-moz-border-radius: 5;
+	border-radius: 5px;
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 14px;
+	padding: 5px 13px 6px 13px;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background: #76ab4a;
+	text-decoration: none;
 }
 
 /*

@@ -11,24 +11,34 @@
 		<img src="/images/logo.png">
 	</div>
 
-	<div class="column cf">
+	<div class="cf">
 
 		<div class="row cf">
+			<div class="col6 right">Items</div>
+		</div>
 
-			<div class="widget left">
-				<input id="input" class="user-input" type="text">
-				<input id="add" type="button" value="Add">
 
-				<input id="json-viewer" class="user-input" type="textarea">
-				<input id="reload" type="button" value="Load JSON">
+		<div class="row cf">
+			<div class="column col6">
+				<div class="row">
+					<label>Add Item:</label>
+					<input id="input" class="user-input" type="text">
+					<a id="add" class="btn">Add &#9656;</a>
+				</div>
+
+				<div class="row">
+					<label>JSON:</label>
+					<input id="json-viewer" class="user-input" type="textarea">
+				</div>
+
+				<a id="reload" class="btn">Load JSON</a>
 			</div>
 
-			<div class="widget right">
-				<ul id="list" class="can-edit">
+			<div class="column col6">
+				<ul id="list-view" class="json-list can-edit">
 					<!-- filled dynamically -->
 				</ul>
 			</div>
-
 		</div>
 
 	</div>
