@@ -23,7 +23,7 @@
 	UI.$add_btn.addEventListener('click', addToList)
 	UI.$reload_btn.addEventListener('click', updateList)
 
-	renderAll()
+	redrawList()
 
 
 	function addToList ()
@@ -34,8 +34,8 @@
 		enableDelete( UI.$list.querySelector('li:last-child a.delete-btn'), internal_data.length-1 )
 
 		UI.$input.value = ''
-		UI.$json_viewer.value = JSON.stringify( internal_data )
 		UI.$input.focus()
+		refreshJsonViewer()
 	}
 
 
@@ -45,7 +45,7 @@
 			return
 
 		internal_data.splice( i, 1 )
-		renderAll()
+		redrawList()
 	}
 
 
@@ -61,16 +61,16 @@
 
 		if (! valid || ! Array.isArray(json)) {
 			window.alert( 'Invalid input. Reverting to previous state.' )
-			UI.$json_viewer.value = JSON.stringify( internal_data )
+			refreshJsonViewer()
 		}
 		else {
 			internal_data = json
-			renderAll()
+			redrawList()
 		}
 	}
 
 
-	function renderAll ()
+	function redrawList ()
 	{
 		if (! Array.isArray( internal_data ))
 			return
@@ -80,9 +80,9 @@
 			html += template( 'list-item', { words: string } )
 		})
 
-		UI.$json_viewer.value = JSON.stringify( internal_data )
+		refreshJsonViewer()
 		UI.$list.innerHTML = html
-		
+
 		Array.prototype.map.call( UI.$list.querySelectorAll('li a.delete-btn'), enableDelete )
 	}
 
@@ -122,6 +122,12 @@
 
 	function enableDelete (el, i) {
 		el.addEventListener( 'click', function(ev){ ev.preventDefault(); removeFromList(i) } )
+	}
+
+
+	function refreshJsonViewer ()
+	{
+		UI.$json_viewer.value = JSON.stringify( internal_data )
 	}
 
 })();
