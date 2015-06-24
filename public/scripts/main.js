@@ -23,15 +23,19 @@
 	UI.$add_btn.addEventListener('click', addToList)
 	UI.$reload_btn.addEventListener('click', updateList)
 
-	render()
+	renderAll()
 
 
 	function addToList ()
 	{
 		internal_data.push( UI.$input.value )
+
+		appendHtmlFrag( UI.$list, template('list-item', { words: UI.$input.value }) )
+		enableDelete( UI.$list.querySelector('li:last-child a.delete-btn'), internal_data.length-1 )
+
 		UI.$input.value = ''
+		UI.$json_viewer.value = JSON.stringify( internal_data )
 		UI.$input.focus()
-		render()
 	}
 
 
@@ -41,7 +45,7 @@
 			return
 
 		internal_data.splice( i, 1 )
-		render()
+		renderAll()
 	}
 
 
@@ -61,12 +65,12 @@
 		}
 		else {
 			internal_data = json
-			render()
+			renderAll()
 		}
 	}
 
 
-	function render ()
+	function renderAll ()
 	{
 		if (! Array.isArray( internal_data ))
 			return
@@ -79,9 +83,7 @@
 		UI.$json_viewer.value = JSON.stringify( internal_data )
 		UI.$list.innerHTML = html
 		
-		Array.prototype.map.call( UI.$list.querySelectorAll('li a.delete-btn'), function (el, i) {
-			el.addEventListener( 'click', function(){ removeFromList(i) } )
-		})
+		Array.prototype.map.call( UI.$list.querySelectorAll('li a.delete-btn'), enableDelete )
 	}
 
 
@@ -107,6 +109,19 @@
 		})
 
 		return result
+	}
+
+
+	function appendHtmlFrag (el, html)
+	{
+		var holder = document.createElement('div')
+		holder.innerHTML = html
+		el.appendChild( holder.childNodes[0] )
+	}
+
+
+	function enableDelete (el, i) {
+		el.addEventListener( 'click', function(ev){ ev.preventDefault(); removeFromList(i) } )
 	}
 
 })();
