@@ -10,15 +10,35 @@
 	}
 
 	var internal_data = [1,2,3,4]
+	var onUpdate = []
 
 	// Don't worry, I didn't include jQuery.
 	var UI = {
-		$input: $('#input')
+		$input: $('#new-item-input')
 	,	$add_btn: $('#add')
-	,	$json_viewer: $('#json-viewer')
+	,	$json_viewer: $('#json-input-output')
 	,	$reload_btn: $('#reload')
 	,	$list: $('#list-view')
 	}
+
+
+	forEach( document.querySelectorAll('.expanding-area'), function (container) {
+		var area = container.querySelector('textarea')
+		var span = container.querySelector('pre span')
+
+		area.addEventListener('input', updateTextAreaSize, false)
+		span.textContent = area.value
+
+		// Enable extra CSS
+		container.className += " active"
+		onUpdate.push( updateTextAreaSize )
+
+		function updateTextAreaSize ()
+		{
+			span.textContent = area.value
+		}
+	})
+
 
 	UI.$add_btn.addEventListener('click', addToList)
 	UI.$reload_btn.addEventListener('click', updateList)
@@ -83,7 +103,7 @@
 		refreshJsonViewer()
 		UI.$list.innerHTML = html
 
-		Array.prototype.map.call( UI.$list.querySelectorAll('li a.delete-btn'), enableDelete )
+		forEach( UI.$list.querySelectorAll('li a.delete-btn'), enableDelete )
 	}
 
 
@@ -128,6 +148,13 @@
 	function refreshJsonViewer ()
 	{
 		UI.$json_viewer.value = JSON.stringify( internal_data )
+		onUpdate.map( function (cb) { cb() } )
+	}
+
+
+	function forEach (arrayLike, cb)
+	{
+		Array.prototype.map.call( arrayLike, cb )
 	}
 
 })();

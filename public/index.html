@@ -22,13 +22,16 @@
 			<div class="column col6 input-form">
 				<div class="row row1">
 					<label>Add Item:</label>
-					<input id="input" class="user-input" type="text">
+					<input id="new-item-input" class="user-input" type="text">
 					<a id="add" class="btn">Add &#9656;</a>
 				</div>
 
 				<div class="row row2">
 					<label>JSON:</label>
-					<textarea id="json-viewer" class="user-input"></textarea>
+					<div id="json-viewer" class="expanding-area user-input">
+						<pre><span></span><br></pre>
+						<textarea id="json-input-output" class="user-input"></textarea>
+					</div>
 				</div>
 
 				<div class="row row3">

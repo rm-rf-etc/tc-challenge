@@ -50,7 +50,6 @@ body {
  * Rendered list of user's JSON data.
  */
 
-
 ul.json-list {
 	list-style-type: decimal;
 }
@@ -154,25 +153,20 @@ ul.json-list {
 	display: inline-block;
 	width: 25%;
 }
-#input, #json-viewer {
+#new-item-input {
+	display: inline-block;
+	width: 47%;
+	padding: 0.2em;
+}
+.user-input {
 	font-size: 1em;
 	border-radius: 5px;
 	border-color: #d6d6d6;
 	border-style: solid;
 	border-width: 2px;
 }
-#input {
-	display: inline-block;
-	width: 47%;
-	padding: 0.2em;
-}
 .input-form label {
 	text-align: right;
-}
-#json-viewer {
-	vertical-align: text-top;
-	width: 68%;
-	max-width: 68%;
 }
 #reload {
 	margin-left: 9em;
@@ -182,6 +176,56 @@ ul.json-list {
 	margin-right: 1.5em;
 }
 
+/*
+ * Expanding text area
+ */
+
+.expanding-area {
+	position: relative;
+	background: #fff;
+	width: 68%;
+	max-width: 68%;
+}
+#json-viewer {
+	display: inline-block;
+	vertical-align: top;
+}
+.expanding-area > textarea,
+.expanding-area > pre {
+	margin: 0;
+	outline: 0;
+	border: 0;
+
+	padding: 5px;
+	background: transparent;
+	font: 400 13px/16px helvetica, arial, sans-serif;
+	/* Make the text soft-wrap */
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+.expanding-area > textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100px;
+}
+.expanding-area.active > textarea {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	resize: none;
+}
+.expanding-area > pre {
+	display: none;
+}
+.expanding-area.active > pre {
+	display: block;
+	visibility: hidden;
+}
 
 
 /*
