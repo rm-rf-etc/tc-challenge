@@ -35,6 +35,9 @@
 
 	function removeFromList (i)
 	{
+		if (! i in internal_data)
+			return
+
 		internal_data.splice( i, 1 )
 		render()
 	}
@@ -53,11 +56,11 @@
 		if (! valid || ! Array.isArray(json)) {
 			window.alert( 'Invalid input. Reverting to previous state.' )
 			UI.$json_viewer.value = JSON.stringify( internal_data )
-			return
 		}
-
-		internal_data = json
-		render()
+		else {
+			internal_data = json
+			render()
+		}
 	}
 
 
@@ -74,8 +77,7 @@
 		UI.$json_viewer.value = JSON.stringify( internal_data )
 		UI.$list.innerHTML = html
 		
-		var deleteButtons = Array.prototype.slice.call( UI.$list.querySelectorAll('li a.delete-btn') )
-		deleteButtons.map( function (el, i) {
+		toArray( UI.$list.querySelectorAll('li a.delete-btn') ).map( function (el, i) {
 			el.addEventListener( 'click', function(){ removeFromList(i) } )
 		})
 	}
@@ -103,6 +105,12 @@
 		})
 
 		return result
+	}
+
+
+	function toArray (data)
+	{
+		return Array.prototype.slice.call( data )
 	}
 
 })();
