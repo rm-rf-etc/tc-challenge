@@ -6,7 +6,7 @@ html, body {
 	height: 100%;
 }
 body {
-	max-width: 800px;
+	width: 800px;
 	margin: auto;
 	background-color: #f2f2f2;
 }
@@ -169,7 +169,7 @@ ul.json-list {
 	text-align: right;
 }
 #reload {
-	margin-left: 9em;
+	margin-left: 7em;
 }
 #add {
 	float: right;
