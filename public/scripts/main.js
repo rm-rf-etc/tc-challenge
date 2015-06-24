@@ -79,7 +79,7 @@
 		UI.$json_viewer.value = JSON.stringify( internal_data )
 		UI.$list.innerHTML = html
 		
-		toArray( UI.$list.querySelectorAll('li a.delete-btn') ).map( function (el, i) {
+		Array.prototype.map.call( UI.$list.querySelectorAll('li a.delete-btn'), function (el, i) {
 			el.addEventListener( 'click', function(){ removeFromList(i) } )
 		})
 	}
@@ -107,12 +107,6 @@
 		})
 
 		return result
-	}
-
-
-	function toArray (data)
-	{
-		return Array.prototype.slice.call( data )
 	}
 
 })();

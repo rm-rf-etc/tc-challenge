@@ -8,8 +8,19 @@ html, body {
 body {
 	max-width: 800px;
 	margin: auto;
+	background-color: #f2f2f2;
 }
-#logo {}
+#logo {
+	padding-top: 0.7em;
+	padding-bottom: 0.3em;
+}
+#main {
+	border: 1px solid #d4d4d4;
+	background-color: white;
+	min-height: 300px;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
 
 
 
@@ -22,12 +33,13 @@ body {
 }
 .column, .columns {
 	position: relative;
-	padding-right: 19px;
+	margin-right: 19px;
 	float: left;
 }
-.col6 {
-	width: 50%;
-}
+.column .row { padding:0; }
+.col6 { width:calc(50% - 19px); }
+.col4 { width:calc(33.33% - 19px); }
+
 .right { float:right; }
 .left { float:left; }
 
@@ -69,6 +81,9 @@ ul.json-list {
 	word-wrap: break-word;
 	color: #ec6c27;
 }
+.json-list li .copy:before {
+	content: '';
+}
 
 .delete-btn {
 	position: absolute;
@@ -81,12 +96,13 @@ ul.json-list {
 }
 
 
+
 /*
- * Input controls
+ * General inputs styling
  */
 
 .btn {
-	display: table;
+	display: inline-block;
 	background: #7eb64f;
 	background-image: -webkit-linear-gradient(top, #7eb64f, #3c6127);
 	background-image: -moz-linear-gradient(top, #7eb64f, #3c6127);
@@ -107,6 +123,46 @@ ul.json-list {
 	background: #76ab4a;
 	text-decoration: none;
 }
+
+
+
+/*
+ * Input form area
+ */
+
+.input-form {
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	background: rgba(255,255,255,1);
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+	background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(230,230,230,1)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=1 );
+}
+.input-form label,
+.input-form input {
+	display: inline-block;
+	width: 33.33%;
+}
+.input-form label {
+	text-align: right;
+}
+.input-form .row {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+#json-viewer {
+	vertical-align: text-top;
+	width: 60%;
+	max-width: 60%;
+}
+#reload {
+	margin-left: 9em;
+}
+
+
 
 /*
 I assume that including the modern clearfix solution is permissible for this test.

@@ -11,7 +11,7 @@
 		<img src="/images/logo.png">
 	</div>
 
-	<div class="cf">
+	<div id="main" class="cf">
 
 		<div class="row cf">
 			<div class="col6 right">Items</div>
@@ -19,19 +19,21 @@
 
 
 		<div class="row cf">
-			<div class="column col6">
-				<div class="row">
+			<div class="column col6 input-form">
+				<div class="row row1">
 					<label>Add Item:</label>
 					<input id="input" class="user-input" type="text">
 					<a id="add" class="btn">Add &#9656;</a>
 				</div>
 
-				<div class="row">
+				<div class="row row2">
 					<label>JSON:</label>
-					<input id="json-viewer" class="user-input" type="textarea">
+					<textarea id="json-viewer" class="user-input"></textarea>
 				</div>
 
-				<a id="reload" class="btn">Load JSON</a>
+				<div class="row row3">
+					<a id="reload" class="btn">Load JSON</a>
+				</div>
 			</div>
 
 			<div class="column col6">
